@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "635704567307",
+    "project_id": "helpz-be2f0",
+    "storage_bucket": "helpz-be2f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635704567307:android:c61ff4700b6a38c0abc90e",
+        "android_client_info": {
+          "package_name": "com.example.helpz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635704567307-aqstfgb5jdlc43pr879pu7q4pffn0sh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmfc8uEKiyFx_dZgGeassu2p_70FaA1Kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635704567307-aqstfgb5jdlc43pr879pu7q4pffn0sh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,28 @@
-import 'resposta_processamento.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dataModelBuilder.dart';
 
-import 'dataModel.dart';
+class Dao{
+  final String tableName;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-abstract class Dao<DM extends DataModel> {
-  Future<DM?> getDataModel(String id);
+  Future<String> getUserId() async{
+    return await _firebaseAuth.currentUser!.uid;
+  }
 
-  Future<List<DM>> getDataModels();
+  FirebaseFirestore? _instance;
 
-  Future<RespostaProcessamento> saveDataModel(DM dataModel);
+  Future<Map?> getDataModelFromFirebase() async {
 
-  Future<RespostaProcessamento> removeDataModel(DM dataModel);
+    _instance = FirebaseFirestore.instance;
+    CollectionReference dadosPrestador = _instance!.collection(tableName);
+
+    DocumentSnapshot json = await dadosPrestador.doc(await getUserId()).get();
+
+    var createDataModel = DataModelBuilder().createDataModel(json);
+    createDataModel;
+  }
+
+  Dao({required this.tableName});
 }
+

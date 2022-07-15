@@ -1,0 +1,41 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:substring_highlight/substring_highlight.dart';
+
+class ViewListaPesquisaCidade extends StatefulWidget {
+  ViewListaPesquisaCidade({Key? key,});
+
+  @override
+  State<ViewListaPesquisaCidade> createState() => _ViewListaPesquisaCidade();
+}
+
+class _ViewListaPesquisaCidade extends State<ViewListaPesquisaCidade> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        shrinkWrap: true,
+        //itemCount: widget.viewModel.listaVisivel.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: ListTile(
+                onTap: () {
+                //  Navigator.of(context).pop(widget.viewModel.listaVisivel[index].cidade.nome);
+                },
+                title: SubstringHighlight(
+                  text: 'widget.viewModel.listaVisivel[index].cidade.nome',
+                  caseSensitive: false,
+                  overflow: TextOverflow.ellipsis,
+                 // term: widget.viewModel.controlerFieldPesquisa.text,
+                  textAlign: TextAlign.left,
+                  textStyleHighlight: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    backgroundColor:
+                        Theme.of(context).textTheme.headline2!.backgroundColor,
+                  ),
+                  words: false,
+                ),
+                leading: Icon(Icons.location_city)),
+          );
+        });
+  }
+}

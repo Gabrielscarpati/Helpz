@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:projeto_treinamento/businessModels/businessModelDadosPrestador.dart';
 
-class UpdateDadosPrestador {
+/*class UpdateDadosPrestador {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<String?> getUserId() async {
@@ -27,7 +26,7 @@ class UpdateDadosPrestador {
   UpdateDadosPrestador({
     required this.prestador,
   });
-}
+}*/
 
 class UpdateCidadePrestador {
   final FirebaseAuth auth = FirebaseAuth.instance;
