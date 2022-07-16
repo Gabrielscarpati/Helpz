@@ -1,4 +1,1 @@
-
-abstract class DataMoldel{
-
-}
+abstract class DataModel {}

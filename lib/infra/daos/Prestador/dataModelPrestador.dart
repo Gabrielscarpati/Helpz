@@ -1,6 +1,6 @@
 import 'package:helpz/framework/dataModel.dart';
 
-class DataMoldelPrestador extends DataMoldel{
+class DataMoldelPrestador extends DataModel {
   DataMoldelPrestador({
     required this.IdPrestador,
     required this.name,

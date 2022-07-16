@@ -1,7 +1,42 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../util/resposta_processamento.dart';
+import 'dataModel.dart';
 import 'dataModelBuilder.dart';
 
+abstract class Dao<DM extends DataModel,
+    DMBuilder extends DataModelBuilder<DM>> {
+  final String tableName;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  final DMBuilder dataModelBuilder;
+
+  Dao({required this.tableName, required this.dataModelBuilder});
+
+  Future<String> getUserId() async {
+    return await _firebaseAuth.currentUser!.uid;
+  }
+
+  FirebaseFirestore? _instance;
+  Future<DM?> getDataModel(String id);
+
+  Future<List<DM>> getDataModels();
+
+  Future<RespostaProcessamento> saveDataModel(DM dataModel);
+
+  Future<RespostaProcessamento> removeDataModel(DM dataModel);
+
+  Future<DocumentSnapshot<Object?>?> getDataFromFirebase() async {
+    _instance = FirebaseFirestore.instance;
+    CollectionReference dadosPrestador = _instance!.collection(tableName);
+
+    DocumentSnapshot json = await dadosPrestador.doc(await getUserId()).get();
+
+    return json;
+  }
+}
+
+/*
 class Dao{
   final String tableName;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -25,4 +60,4 @@ class Dao{
 
   Dao({required this.tableName});
 }
-
+*/
