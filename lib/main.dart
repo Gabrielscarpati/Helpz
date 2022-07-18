@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -110,4 +111,72 @@ class _ViewSelecionaHubState extends State<ViewSelecionaHub> {
       ),
     );
   }
+}
+
+
+
+class AuthService{
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final googleSignIn = GoogleSignIn();
+
+  Future getFacebookUser () async{
+    return FirebaseAuth.instance.currentUser;
+  }
+
+  Future<String> getUserCurrentID() async{
+    return await firebaseAuth.currentUser!.uid;
+  }
+
+  Future<User?> registerUser (String email, String password) async {
+
+      UserCredential userCredential = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+
+  }
+
+}
+
+
+
+
+class criarPrestador {
+
+  AuthService authService = AuthService();
+
+  void createUsuario() async {
+    await authService.registerUser('email@gmail.com', 'password12323');
+    await criarprestador();
+  }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  Future<String?> getUserId() async {
+    final User? user = await auth.currentUser;
+    final userId = user?.uid.toString();
+    return userId;
+  }
+
+  criarprestador () async{
+    await firestore.collection('workers').doc(await getUserId()).set({
+    'name': 'Gabriel',
+    'phone': '2913123',
+    'workingHours': '2333244',
+    'description': 'asdasdsad',
+    'profilePicture': 'foto1',
+    'comments': 'dsdfsdf',
+    'cities': 'colatina',
+    'roles': 'pedreiro pinto ',
+    'numberClicksOnWhatsApp': 3,
+    'dueDatePlan': DateTime.now(),
+    'openAccountDate': DateTime.now(),
+    'brazilianIDPicture':  'getUrlToImageFirebase()',
+    'IdPrestador': await getUserId(),
+    'planType': 0,
+    'numberClicksOnProfile':0,
+    }
+    );
+  }
+
 }

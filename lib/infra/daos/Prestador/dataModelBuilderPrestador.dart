@@ -21,4 +21,10 @@ class DataModelBuilderPrestador extends DataModelBuilder<DataMoldelPrestador>{
     );
   }
 
+  @override
+  Map<String, dynamic>? createJson(DataMoldelPrestador? dataModel) {
+    // TODO: implement createJson
+    throw UnimplementedError();
+  }
+
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dataModel.dart';
 
 abstract class DataModelBuilder<DM extends DataModel> {
-  DM? createDataModel(Map<String, dynamic> json);
+  DM? createDataModel(DocumentSnapshot<Object?> json);
 
   Map<String, dynamic>? createJson(DM? dataModel);
 
